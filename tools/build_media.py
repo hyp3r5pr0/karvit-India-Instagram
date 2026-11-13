@@ -21,7 +21,7 @@ from pathlib import Path
 
 import requests
 import yaml
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFilter
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import ROOT, font, text_block, wordmark  # noqa: E402
@@ -122,15 +122,69 @@ def _montage(images: list[Image.Image], dest: Path) -> None:
 def build(only: str | None, skip_existing: bool, *, fetcher=fetch) -> list[Path]:
     spec = yaml.safe_load(BUILD_FILE.read_text(encoding="utf-8"))
     photos: dict[str, str] = spec.get("photos") or {}
+    derived: dict[str, dict] = spec.get("derived") or {}
     made: list[Path] = []
+
+    def make_derived(name: str) -> Path:
+        """A crop of another photo: box = [x0, y0, x1, y1] as fractions of that
+        photo; hide = boxes (same units) to blur out, e.g. text that gives away a
+        quiz answer; mark = text drawn on each hidden box. Upscaled so close-ups
+        fill the slide instead of sitting small in the middle."""
+        d = derived[name]
+        base = photo(str(d["from"]))
+        key = hashlib.sha1(repr((str(base), sorted(d.items()))).encode()).hexdigest()[:8]
+        dest = CACHE / f"derived-{name}-{key}.png"
+        if dest.exists():
+            return dest
+        with Image.open(base) as im0:
+            im = im0.convert("RGB")
+        w, h = im.size
+        x0, y0, x1, y1 = (float(v) for v in d["box"])
+        box = (int(x0 * w), int(y0 * h), int(x1 * w), int(y1 * h))
+        for hb in d.get("hide") or []:
+            hx0, hy0, hx1, hy1 = (float(v) for v in hb)
+            r = (int(hx0 * w), int(hy0 * h), int(hx1 * w), int(hy1 * h))
+            # paint over with the darkest tone around it (the tee), soft edges
+            region = im.crop(r).convert("L")
+            hist = region.histogram()
+            cut, seen = 0, 0
+            for level, count in enumerate(hist):
+                seen += count
+                if seen >= 0.2 * sum(hist):
+                    cut = level
+                    break
+            px = [p for p, g in zip(im.crop(r).getdata(), region.getdata()) if g <= cut] or [(18, 18, 20)]
+            tone = tuple(sum(c[i] for c in px) // len(px) for i in range(3))
+            mask = Image.new("L", im.size, 0)
+            ImageDraw.Draw(mask).rounded_rectangle(r, radius=int(0.012 * w), fill=255)
+            mask = mask.filter(ImageFilter.GaussianBlur(max(3, int(0.006 * w))))
+            im = Image.composite(Image.new("RGB", im.size, tone), im, mask)
+            if d.get("mark"):
+                dd = ImageDraw.Draw(im)
+                f = font(max(18, int((r[3] - r[1]) * 0.7)))
+                tw = dd.textlength(str(d["mark"]), font=f)
+                dd.text(((r[0] + r[2] - tw) / 2, r[1] + (r[3] - r[1]) * 0.1), str(d["mark"]),
+                        font=f, fill=ACCENT)
+        out = im.crop(box)
+        scale = 1400 / max(out.size)
+        if scale > 1:
+            out = out.resize((round(out.width * scale), round(out.height * scale)), Image.LANCZOS)
+            out = out.filter(ImageFilter.UnsharpMask(radius=2, percent=60, threshold=2))
+        CACHE.mkdir(parents=True, exist_ok=True)
+        out.save(dest)
+        print(f"  {name}: crop of {d['from']} -> {out.width}x{out.height}")
+        return dest
 
     def photo(ref: str) -> Path:
         """'name' = the photo; 'name@detail' = 2x close-up of the centre (the
         print on a model shot); 'name@crop:cx,cy,scale' = custom close-up, e.g.
-        @crop:0.5,0.45,0.4 keeps 40% of the width around x=50%, y=45%."""
+        @crop:0.5,0.45,0.4 keeps 40% of the width around x=50%, y=45%.
+        A name listed under derived: is a ready-made crop (see make_derived)."""
         name, _, mod = ref.partition("@")
+        if name in derived and not mod:
+            return make_derived(name)
         if name not in photos:
-            sys.exit(f"build.yml: photo '{name}' is not listed under photos:")
+            sys.exit(f"build.yml: photo '{name}' is not listed under photos: or derived:")
         src = fetcher(name, photos[name])
         if not mod:
             return src

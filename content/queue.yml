@@ -4,6 +4,7 @@
 #  Commit + push. The "Check queue" workflow validates it; "Publish to
 #  Instagram" posts it at its time. Times are India time (IST).
 #  `draft: true` = planned but not ready; it is never published.
+#  Max 5 hashtags per post INCLUDING #karvitindia (Instagram's limit), so use 4.
 # ─────────────────────────────────────────────────────────────────────────────
 
 settings:
@@ -17,14 +18,143 @@ settings:
   always_hashtags: [karvitindia]
 
 posts:
-  # Example entry. Replace it with a real one, and delete `draft: true` to make it live.
-  - id: example-first-reel           # unique, never reuse
-    type: reel                       # reel | image | carousel
-    when: 2026-11-20 19:30           # IST
-    media: media/reels/example.mp4
+  # ═════════ WEEK OF 14 NOV · 10 test reels + 2 carousels ═════════
+  # Goal this week: find which angles get sends, saves and comments.
+  # After each post, check Insights at 24h: views, average watch time, sends.
+
+  - id: p01-engine-study-collection
+    type: carousel
+    when: 2026-11-14 13:00
+    media:
+      - media/carousels/engine-study/01-cover.jpg
+      - media/carousels/engine-study/02-twin-boost.jpg
+      - media/carousels/engine-study/03-turbo-forms.jpg
+      - media/carousels/engine-study/04-heart-of-build.jpg
+      - media/carousels/engine-study/05-high-rev.jpg
+      - media/carousels/engine-study/06-american-heart.jpg
+      - media/carousels/engine-study/07-engraved.jpg
+      - media/carousels/engine-study/08-after-dark.jpg
+      - media/carousels/engine-study/09-mech-bloom.jpg
     caption: |
-      Mountains on the weekend, this tee all week. 🏔️
-      Which one are you: car guy or mountain soul?
-    hashtags: [carlovers, mountainlovers, bikerlife, tshirtdesign]
-    first_comment: "Car or mountain? Comment below 👇"   # optional
-    draft: true
+      The Engine Study: 8 engines, drawn as art and printed big on the back of heavyweight oversized tees.
+      Inline-six, V8, twin-turbo, flat-six. Swipe and tell us which number you'd wear 👉
+    hashtags: [carart, petrolhead, oversizedtshirt, carlovers]
+
+  - id: r01-wear-the-engine
+    type: reel
+    when: 2026-11-14 19:30
+    media: media/reels/r01-wear-the-engine.mp4
+    caption: |
+      The car can wait. The engine doesn't have to. 🔧
+      Every KARVIT tee carries an engine study on the back: twin-turbo, V8, inline-six, flat-six.
+      Which engine are you wearing first? 👇
+    hashtags: [carlovers, petrolhead, carenthusiast, oversizedtshirt]
+
+  - id: r03-jdm-or-v8
+    type: reel
+    when: 2026-11-15 12:30
+    media: media/reels/r03-jdm-or-v8.mp4
+    caption: |
+      Settle it in the comments: JDM or V8? 🏁
+      Then send this to the friend who's on the wrong team 😤
+    hashtags: [jdm, v8, musclecar, carculture]
+
+  - id: r02-name-the-engine
+    type: reel
+    when: 2026-11-15 19:30
+    media: media/reels/r02-name-the-engine.mp4
+    caption: |
+      4 engine drawings. How many can you name without zooming in? 🧠
+      Comment your score out of 4, then send it to the friend who calls every car a "sports car".
+    first_comment: "Answers: 1) twin-turbo inline-six 2) V8 3) flat-six 4) inline-six. How many did you get? 👇"
+    hashtags: [enginelovers, petrolheadsindia, jdmindia, carquiz]
+
+  - id: r06-quiet-front-loud-back
+    type: reel
+    when: 2026-11-16 19:30
+    media: media/reels/r06-quiet-front-loud-back.mp4
+    caption: |
+      Car tees don't have to shout from the front.
+      Small KARVIT mark up front, the full engine study on the back. Class or office first, car meet after.
+      240 GSM cotton, oversized, drop shoulder.
+    hashtags: [oversizedtshirt, streetwearindia, carenthusiast, minimalfashion]
+
+  - id: r05-engine-personality
+    type: reel
+    when: 2026-11-17 19:30
+    media: media/reels/r05-engine-personality.mp4
+    caption: |
+      Pick your engine, find your personality 😅
+      V8, inline-six, twin-turbo or flat-six: which one is you?
+      Send this to a friend and tell them theirs.
+    hashtags: [carmemes, petrolheadsindia, carlovers, enginelovers]
+
+  - id: p02-gift-guide
+    type: carousel
+    when: 2026-11-18 13:00
+    media:
+      - media/carousels/gift-guide/01-cover.jpg
+      - media/carousels/gift-guide/02-jdm-fan.jpg
+      - media/carousels/gift-guide/03-muscle.jpg
+      - media/carousels/gift-guide/04-night-drive.jpg
+      - media/carousels/gift-guide/05-engine-nerd.jpg
+      - media/carousels/gift-guide/06-subtle.jpg
+    caption: |
+      Wedding season, birthdays, Secret Santa: the easiest gift for the car person in your life 🎁
+      Swipe to find their tee. Free delivery, COD at no extra charge, and free size exchange on orders till 31 Dec.
+    hashtags: [giftsforhim, giftideas, carlovers, petrolhead]
+
+  - id: r04-gift-for-the-car-person
+    type: reel
+    when: 2026-11-18 19:30
+    media: media/reels/r04-gift-for-the-car-person.mp4
+    caption: |
+      Shopping for someone who already owns every car poster and keychain? 🎁
+      ₹999, free delivery, COD at no extra charge, and free size exchange on orders till 31 Dec.
+      Send this to someone as a not-so-subtle hint 😉
+    hashtags: [giftsforhim, carlovers, carenthusiast, petrolhead]
+
+  - id: r07-what-999-gets-you
+    type: reel
+    when: 2026-11-19 13:00
+    media: media/reels/r07-what-999-gets-you.mp4
+    caption: |
+      No fake "sale", no surprise COD fee. Exactly what ₹999 gets you:
+      • 240 GSM, 100% cotton, oversized drop-shoulder fit
+      • DTF-printed engine artwork on the back
+      • Free delivery, COD at no extra charge
+      • Free size exchange on orders till 31 Dec
+      Ask anything below 👇
+    hashtags: [oversizedtshirt, graphictee, carlovers, petrolhead]
+
+  - id: r09-riders-pick-the-road
+    type: reel
+    when: 2026-11-19 19:30
+    media: media/reels/r09-riders-pick-the-road.mp4
+    caption: |
+      Riding season is here: Motoverse in Goa, then India Bike Week in Panchgani.
+      Car tees are done, so our first rider tee is next, and you pick it:
+      1 · Thumper engine study
+      2 · A twin on a Himalayan pass
+      3 · Ghat hairpins at sunrise
+      Comment your number and send this to your riding group 🏍️
+    hashtags: [bikerlife, ridersofindia, mountainlovers, roadtripindia]
+
+  - id: r10-same-tee-two-fits
+    type: reel
+    when: 2026-11-20 13:00
+    media: media/reels/r10-same-tee-two-fits.mp4
+    caption: |
+      Car girls exist, and they're tired of merch cut only for guys 🙌
+      Every KARVIT tee is unisex oversized: your usual size gives the oversized look, one size down fits closer.
+      Send this to the car girl in your group.
+    hashtags: [cargirl, carlovers, oversizedtshirt, petrolheadsindia]
+
+  - id: r08-rate-them
+    type: reel
+    when: 2026-11-20 19:30
+    media: media/reels/r08-rate-them.mp4
+    caption: |
+      8 tees, 8 engines. Rate them 1–10, honestly 👇
+      Or just comment the number you'd actually wear.
+    hashtags: [tshirtdesign, carart, petrolhead, graphictee]

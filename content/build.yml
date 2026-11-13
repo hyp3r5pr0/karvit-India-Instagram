@@ -54,10 +54,21 @@ photos:
   card-option-3:    assets/cards/rider-option-3.png
   card-vote:        assets/cards/rider-vote.png
 
+derived:
+  # Close-ups of the back print. box/hide = [x0, y0, x1, y1] as fractions of the photo.
+  tb-print: {from: tb-man-back, box: [0.27, 0.18, 0.67, 0.47]}
+  ah-print: {from: ah-man-back, box: [0.28, 0.18, 0.70, 0.47]}
+  em-print: {from: em-man-back, box: [0.28, 0.17, 0.72, 0.47]}
+  # Quiz versions: design name and spec text blurred so the answer isn't printed on screen
+  q1-tb:  {from: tb-man-back,  box: [0.27, 0.18, 0.67, 0.47], hide: [[0.345, 0.198, 0.615, 0.26], [0.522, 0.374, 0.64, 0.466]], mark: "?"}
+  q2-ah:  {from: ah-man-back,  box: [0.28, 0.18, 0.70, 0.47], hide: [[0.395, 0.198, 0.63, 0.282], [0.42, 0.376, 0.585, 0.452]], mark: "?"}
+  q3-ad:  {from: ad-man-back,  box: [0.28, 0.17, 0.72, 0.47], hide: [[0.40, 0.172, 0.60, 0.246], [0.39, 0.374, 0.61, 0.455]], mark: "?"}
+  q4-hob: {from: hob-man-back, box: [0.28, 0.17, 0.72, 0.47], hide: [[0.42, 0.184, 0.585, 0.266], [0.415, 0.381, 0.59, 0.455]], mark: "?"}
+
 reels:
   # R1 · Sat 14 Nov · aspiration: own the engine before the car
   - out: media/reels/r01-wear-the-engine.mp4
-    photos: [tb-man-back, tb-man-back@detail, ah-man-back, tf-woman-back, ad-man-back]
+    photos: [tb-man-back, tb-print, ah-man-back, tf-woman-back, ad-man-back]
     hook: "Can't afford the dream car yet?"
     texts: ["Wear its engine instead", "V8", "Turbo inline-six", "Flat-six"]
     cta: "8 engines · ₹999 each\nlink in bio"
@@ -65,8 +76,8 @@ reels:
 
   # R2 · Sun 15 Nov · quiz: name the engine
   - out: media/reels/r02-name-the-engine.mp4
-    photos: [tb-man-back@detail, ah-man-back@detail, ad-man-back@detail, hob-man-back@detail, hob-man-back]
-    hook: "Name the engine. No. 1"
+    photos: [q1-tb, q2-ah, q3-ad, q4-hob, hob-man-back]
+    hook: "Name the engine\nNo. 1"
     texts: ["No. 2", "No. 3", "No. 4", "Score out of 4?"]
     cta: "Answers in the comments"
     music: assets/music/karvit-night-drive.m4a
@@ -83,7 +94,7 @@ reels:
   - out: media/reels/r04-gift-for-the-car-person.mp4
     photos: [ah-man-back, tb-man-back, hrr-man-back, ad-woman-back, tf-woman-front]
     hook: "Gift for the car person\nwho has everything"
-    texts: ["The brother who knows every engine code", "The one who only talks about his car", "The friend who drags you to car meets", "Not sure of the size?\nFree exchange till 31 Dec"]
+    texts: ["The brother who knows every engine code", "The one who only talks about his car", "The friend who drags you to car meets", "Not sure of the size?\nFree exchange\ntill 31 Dec"]
     cta: "₹999 · free delivery · COD\nlink in bio"
     music: assets/music/karvit-night-drive.m4a
 
@@ -91,7 +102,7 @@ reels:
   - out: media/reels/r05-engine-personality.mp4
     photos: [hrr-man-back, ah-man-back, hob-man-back, tb-man-back, ad-man-back]
     hook: "Your engine says a lot about you"
-    texts: ["V8: loud, loyal, zero chill", "Inline-six: smooth, calm, secretly fast", "Twin-turbo: slow start, then unstoppable", "Flat-six: classy by day, chaos after dark"]
+    texts: ["V8: loud, loyal,\nzero chill", "Inline-six: smooth, calm, secretly fast", "Twin-turbo: slow start, then unstoppable", "Flat-six: classy by day, chaos after dark"]
     cta: "Which one are you?\nlink in bio"
     music: assets/music/karvit-night-drive.m4a
 
@@ -99,15 +110,15 @@ reels:
   - out: media/reels/r06-quiet-front-loud-back.mp4
     photos: [hob-man-front, hob-man-back, em-woman-front, em-woman-back, tf-man-side]
     hook: "Front: college and office safe"
-    texts: ["Back: car-meet ready", "Just a small mark on the front", "The full engine study on the back", "240 GSM · oversized · drop shoulder"]
+    texts: ["Back: car-meet ready", "Just a small mark on the front", "The full engine study on the back", "240 GSM · oversized\ndrop shoulder"]
     cta: "Quiet front. Loud back.\nlink in bio"
     music: assets/music/karvit-night-drive.m4a
 
   # R7 · Thu 19 Nov · trust: exactly what ₹999 gets you
   - out: media/reels/r07-what-999-gets-you.mp4
-    photos: [tb-man-back, tb-man-back@detail, em-man-side, ah-man-back@detail, hrr-woman-front, tf-woman-front]
-    hook: "What ₹999 gets you at KARVIT"
-    texts: ["240 GSM, 100% cotton", "Oversized, drop shoulder", "DTF-printed back artwork", "Free delivery\nCOD at no extra charge", "Wrong size?\nFree exchange till 31 Dec"]
+    photos: [tb-man-back, tb-print, em-man-side, ah-print, hrr-woman-front, tf-woman-front]
+    hook: "What ₹999 gets you\nat KARVIT"
+    texts: ["240 GSM, 100% cotton", "Oversized, drop shoulder", "DTF-printed back artwork", "Free delivery\nCOD at no extra charge", "Wrong size?\nFree exchange\ntill 31 Dec"]
     cta: "No surprises\nlink in bio"
     music: assets/music/karvit-night-drive.m4a
 
@@ -115,14 +126,14 @@ reels:
   - out: media/reels/r08-rate-them.mp4
     seconds: 1.5
     photos: [tb-man-back, tf-man-back, hob-man-back, hrr-man-back, ah-man-back, em-man-back, ad-man-back, mb-man-back]
-    hook: "Rate them 1 to 10. No. 1"
+    hook: "Rate them 1 to 10\nNo. 1"
     texts: ["No. 2", "No. 3", "No. 4", "No. 5", "No. 6", "No. 7", "No. 8"]
     cta: "Comment the number you'd wear"
     music: assets/music/karvit-boost.m4a
 
   # R9 · Thu 19 Nov · demand test for the rider/mountain line (Motoverse + IBW season)
   - out: media/reels/r09-riders-pick-the-road.mp4
-    photos: [em-man-back@detail, card-riders-next, card-option-1, card-option-2, card-option-3, card-vote]
+    photos: [em-print, card-riders-next, card-option-1, card-option-2, card-option-3, card-vote]
     hook: "We draw engines\nlike this"
     texts: ["", "", "", "", ""]
     cta: "Send this to your riding group"
@@ -132,7 +143,7 @@ reels:
   - out: media/reels/r10-same-tee-two-fits.mp4
     photos: [tb-woman-back, tb-man-back, tf-woman-front, hrr-woman-side, ah-woman-back]
     hook: "Car merch is always cut for guys"
-    texts: ["Ours is unisex oversized", "Your usual size = oversized look", "One size down = closer fit", "Same engines. Your fit."]
+    texts: ["Ours is unisex oversized", "Your usual size = oversized look", "One size down\n= closer fit", "Same engines. Your fit."]
     cta: "Send this to a car girl\nlink in bio"
     music: assets/music/karvit-boost.m4a
 
@@ -158,4 +169,4 @@ carousels:
       - {file: 03-muscle.jpg,      photo: ah-man-back,    text: "The muscle-car dreamer → American Heart"}
       - {file: 04-night-drive.jpg, photo: ad-man-back,    text: "The midnight-drive person → After Dark"}
       - {file: 05-engine-nerd.jpg, photo: mb-man-back,    text: "The engine nerd → Mechanical Bloom"}
-      - {file: 06-subtle.jpg,      photo: hob-man-front,  text: "The one who likes it subtle → any tee, small front mark"}
+      - {file: 06-subtle.jpg,      photo: hob-man-front,  text: "The one who likes it subtle → small front mark"}
