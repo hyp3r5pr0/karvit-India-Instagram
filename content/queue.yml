@@ -1,0 +1,30 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  KARVIT India (@karvit.india) Instagram queue
+#  Add a post = put its file in media/ and add an entry under `posts:`.
+#  Commit + push. The "Check queue" workflow validates it; "Publish to
+#  Instagram" posts it at its time. Times are India time (IST).
+#  `draft: true` = planned but not ready; it is never published.
+# ─────────────────────────────────────────────────────────────────────────────
+
+settings:
+  timezone: Asia/Kolkata         # all `when:` times below are IST
+  max_posts_per_run: 1
+  min_gap_minutes: 120           # never two posts within 2 hours
+  max_lateness_hours: 6          # if GitHub runs very late, skip rather than post at 3 AM
+  max_attempts: 3                # then stop retrying and flag it
+  reel_upload: url               # url (official) | auto | resumable
+  caption_footer: "🛒 Order at karvit.in (link in bio) · Free delivery · COD available"
+  always_hashtags: [karvitindia]
+
+posts:
+  # Example entry. Replace it with a real one, and delete `draft: true` to make it live.
+  - id: example-first-reel           # unique, never reuse
+    type: reel                       # reel | image | carousel
+    when: 2026-11-20 19:30           # IST
+    media: media/reels/example.mp4
+    caption: |
+      Mountains on the weekend, this tee all week. 🏔️
+      Which one are you: car guy or mountain soul?
+    hashtags: [carlovers, mountainlovers, bikerlife, tshirtdesign]
+    first_comment: "Car or mountain? Comment below 👇"   # optional
+    draft: true

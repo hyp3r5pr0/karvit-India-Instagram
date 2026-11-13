@@ -1,0 +1,22 @@
+# ─────────────────────────────────────────────────────────────────────────────
+#  Media build list: turns karvit.in product photos into reels and carousel
+#  slides. Runs in GitHub Actions ("Build media" workflow) whenever this file
+#  changes, then commits the results to media/ plus previews to media/previews/.
+#
+#  Photos: any direct image link works. On karvit.in, open a product, right-click
+#  the photo → Copy image address (a cdn.shopify.com link) and paste it below.
+#
+#  On-screen text: no emoji (the font can't draw them); emoji are fine in captions.
+# ─────────────────────────────────────────────────────────────────────────────
+
+photos: {}
+  # name: https://cdn.shopify.com/...jpg
+
+reels: []
+  # - out: media/reels/mountain-tee.mp4
+  #   photos: [mountain-tee-1, mountain-tee-1@detail, mountain-tee-2]
+  #   hook: "For people who plan trips around mountains"
+  #   texts: ["Front print", "Black or white?"]
+  #   cta: "Order at karvit.in\nlink in bio"
+
+carousels: []
