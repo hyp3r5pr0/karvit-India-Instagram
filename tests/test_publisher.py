@@ -254,6 +254,8 @@ class SafetyTests(unittest.TestCase):
         self.assertTrue(caption_problems("x" * 2201))
         self.assertTrue(caption_problems(" ".join(f"#t{i}" for i in range(31))))
         self.assertEqual(caption_problems("fine #a #b"), [])
+        self.assertTrue(caption_problems("#a #b #c #d #e #f"))   # Instagram caps at 5
+        self.assertEqual(caption_problems("#a #b #c #d #e"), [])
 
     def test_hashtags_merged_and_deduplicated(self):
         s = Settings(caption_footer="Shop link in bio", always_hashtags=["karvit"])

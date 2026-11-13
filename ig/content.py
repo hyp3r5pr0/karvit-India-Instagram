@@ -18,8 +18,8 @@ STATE_FILE = ROOT / "content" / "posted.json"
 
 POST_TYPES = {"image", "reel", "carousel"}
 CAPTION_LIMIT = 2200
-HASHTAG_LIMIT = 30
-MENTION_LIMIT = 20
+HASHTAG_LIMIT = 5    # Instagram's cap per post/reel since Dec 2025 (was 30)
+MENTION_LIMIT = 5    # the publishing API allows 5 @mentions per post
 HASHTAG_RE = re.compile(r"(?<!\w)#\w+", re.UNICODE)
 MENTION_RE = re.compile(r"(?<!\w)@[\w.]+", re.UNICODE)
 

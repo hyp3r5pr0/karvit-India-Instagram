@@ -50,6 +50,11 @@ def candidates(url: str) -> list[str]:
 
 
 def fetch(name: str, url: str, *, http=requests) -> Path:
+    if not url.startswith(("http://", "https://")):
+        local = ROOT / url   # a file in this repo, e.g. assets/cards/poll.png
+        if not local.exists():
+            sys.exit(f"Photo '{name}': file not found in repo: {url}")
+        return local
     CACHE.mkdir(parents=True, exist_ok=True)
     dest = CACHE / f"{name}-{hashlib.sha1(url.encode()).hexdigest()[:8]}.jpg"
     if dest.exists():
@@ -163,6 +168,8 @@ def build(only: str | None, skip_existing: bool, *, fetcher=fetch) -> list[Path]
             cmd += ["--text", t]
         if "cta" in reel:
             cmd += ["--cta", reel["cta"] or ""]
+        if reel.get("seconds"):
+            cmd += ["--seconds", str(reel["seconds"])]
         if reel.get("music"):
             cmd += ["--music", str(ROOT / reel["music"])]
         res = subprocess.run(cmd, capture_output=True, text=True)

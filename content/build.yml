@@ -4,19 +4,158 @@
 #  changes, then commits the results to media/ plus previews to media/previews/.
 #
 #  Photos: any direct image link works. On karvit.in, open a product, right-click
-#  the photo → Copy image address (a cdn.shopify.com link) and paste it below.
+#  the photo → Copy image address and paste it below. A file in this repo also
+#  works (e.g. assets/cards/riders-next.png) for text-only slides.
 #
+#  "name@detail" = 2x close-up of the centre (the back print);
+#  "name@crop:cx,cy,scale" = custom close-up, e.g. @crop:0.5,0.45,0.4
 #  On-screen text: no emoji (the font can't draw them); emoji are fine in captions.
+#  Per reel: seconds = time per slide (default 2.4); music = file in assets/music.
 # ─────────────────────────────────────────────────────────────────────────────
 
-photos: {}
-  # name: https://cdn.shopify.com/...jpg
+photos:
+  # Twin Boost: R34-inspired coupe + RB26 twin-turbo inline-six (black)
+  tb-man-back:     https://www.karvit.in/cdn/shop/files/karvit-twin-boost-indian-man-back.png?v=1793703599&width=1400
+  tb-woman-back:   https://www.karvit.in/cdn/shop/files/karvit-twin-boost-indian-woman-back.png?v=1793703649&width=1400
+  tb-man-front:    https://www.karvit.in/cdn/shop/files/karvit-twin-boost-indian-man-front.png?v=1793703581&width=1400
+  tb-woman-front:  https://www.karvit.in/cdn/shop/files/karvit-twin-boost-indian-woman-front.png?v=1793703631&width=1400
+  tb-man-side:     https://www.karvit.in/cdn/shop/files/karvit-twin-boost-indian-man-side.png?v=1793703615&width=1400
+  # Turbo Forms: A80-inspired coupe + 2JZ inline-six (black)
+  tf-man-back:     https://www.karvit.in/cdn/shop/files/karvit-turbo-forms-indian-man-back.png?v=1793700815&width=1400
+  tf-woman-back:   https://www.karvit.in/cdn/shop/files/karvit-turbo-forms-indian-woman-back.png?v=1793703488&width=1400
+  tf-woman-front:  https://www.karvit.in/cdn/shop/files/karvit-turbo-forms-indian-woman-front.png?v=1793700566&width=1400
+  tf-man-side:     https://www.karvit.in/cdn/shop/files/karvit-turbo-forms-indian-man-side.png?v=1793700749&width=1400
+  # Heart of the Build: German coupe + high-revving inline-six (black)
+  hob-man-back:    https://www.karvit.in/cdn/shop/files/karvit-heart-of-the-build-indian-man-back.png?v=1793700354&width=1400
+  hob-man-front:   https://www.karvit.in/cdn/shop/files/karvit-heart-of-the-build-indian-man-front.png?v=1793700416&width=1400
+  # High-Rev Ritual: German coupe + high-revving V8 (black)
+  hrr-man-back:    https://www.karvit.in/cdn/shop/files/karvit-high-rev-ritual-indian-man-back.png?v=1793700686&width=1400
+  hrr-woman-front: https://www.karvit.in/cdn/shop/files/karvit-high-rev-ritual-indian-woman-front.png?v=1793700581&width=1400
+  hrr-woman-side:  https://www.karvit.in/cdn/shop/files/karvit-high-rev-ritual-indian-woman-side.png?v=1793700849&width=1400
+  # American Heart: muscle coupe + V8 (black)
+  ah-man-back:     https://www.karvit.in/cdn/shop/files/karvit-american-heart-indian-man-back.png?v=1793703505&width=1400
+  ah-woman-back:   https://www.karvit.in/cdn/shop/files/karvit-american-heart-indian-woman-back.png?v=1793700533&width=1400
+  ah-man-front:    https://www.karvit.in/cdn/shop/files/karvit-american-heart-indian-man-front.png?v=1793700798&width=1400
+  # Engraved Motion: American sports coupe + V8, copper engraving (black)
+  em-man-back:     https://www.karvit.in/cdn/shop/files/karvit-engraved-motion-indian-man-back.png?v=1793700634&width=1400
+  em-woman-back:   https://www.karvit.in/cdn/shop/files/karvit-engraved-motion-indian-woman-back.png?v=1793703547&width=1400
+  em-woman-front:  https://www.karvit.in/cdn/shop/files/karvit-engraved-motion-indian-woman-front.png?v=1793703530&width=1400
+  em-man-side:     https://www.karvit.in/cdn/shop/files/karvit-engraved-motion-indian-man-side.png?v=1793700703&width=1400
+  # After Dark: rear-view sports car + flat-six (black)
+  ad-man-back:     https://www.karvit.in/cdn/shop/files/karvit-after-dark-indian-man-back.png?v=1793700615&width=1400
+  ad-woman-back:   https://www.karvit.in/cdn/shop/files/karvit-after-dark-indian-woman-back.png?v=1793700550&width=1400
+  # Mechanical Bloom: silver coupe + exploded engine (white)
+  mb-man-back:     https://www.karvit.in/cdn/shop/files/karvit-mechanical-bloom-mens-back.png?v=1793689941&width=1400
+  mb-woman-front:  https://www.karvit.in/cdn/shop/files/karvit-mechanical-bloom-womens-front.png?v=1793689987&width=1400
+  # Text cards (in this repo)
+  card-riders-next: assets/cards/riders-next.png
+  card-option-1:    assets/cards/rider-option-1.png
+  card-option-2:    assets/cards/rider-option-2.png
+  card-option-3:    assets/cards/rider-option-3.png
+  card-vote:        assets/cards/rider-vote.png
 
-reels: []
-  # - out: media/reels/mountain-tee.mp4
-  #   photos: [mountain-tee-1, mountain-tee-1@detail, mountain-tee-2]
-  #   hook: "For people who plan trips around mountains"
-  #   texts: ["Front print", "Black or white?"]
-  #   cta: "Order at karvit.in\nlink in bio"
+reels:
+  # R1 · Sat 14 Nov · aspiration: own the engine before the car
+  - out: media/reels/r01-wear-the-engine.mp4
+    photos: [tb-man-back, tb-man-back@detail, ah-man-back, tf-woman-back, ad-man-back]
+    hook: "Can't afford the dream car yet?"
+    texts: ["Wear its engine instead", "V8", "Turbo inline-six", "Flat-six"]
+    cta: "8 engines · ₹999 each\nlink in bio"
+    music: assets/music/karvit-boost.m4a
 
-carousels: []
+  # R2 · Sun 15 Nov · quiz: name the engine
+  - out: media/reels/r02-name-the-engine.mp4
+    photos: [tb-man-back@detail, ah-man-back@detail, ad-man-back@detail, hob-man-back@detail, hob-man-back]
+    hook: "Name the engine. No. 1"
+    texts: ["No. 2", "No. 3", "No. 4", "Score out of 4?"]
+    cta: "Answers in the comments"
+    music: assets/music/karvit-night-drive.m4a
+
+  # R3 · Sun 15 Nov · tribe debate: JDM vs V8
+  - out: media/reels/r03-jdm-or-v8.mp4
+    photos: [tb-man-back, ah-man-back, tf-man-back, em-man-back, hrr-man-back]
+    hook: "JDM or V8? Pick one."
+    texts: ["V8: no replacement for displacement", "JDM: turbo inline-six", "V8, engraved in copper", "Still can't decide?"]
+    cta: "Comment JDM or V8\nlink in bio"
+    music: assets/music/karvit-boost.m4a
+
+  # R4 · Wed 18 Nov · gifting for the car person
+  - out: media/reels/r04-gift-for-the-car-person.mp4
+    photos: [ah-man-back, tb-man-back, hrr-man-back, ad-woman-back, tf-woman-front]
+    hook: "Gift for the car person\nwho has everything"
+    texts: ["The brother who knows every engine code", "The one who only talks about his car", "The friend who drags you to car meets", "Not sure of the size?\nFree exchange till 31 Dec"]
+    cta: "₹999 · free delivery · COD\nlink in bio"
+    music: assets/music/karvit-night-drive.m4a
+
+  # R5 · Tue 17 Nov · relatable/shareable: engine = personality
+  - out: media/reels/r05-engine-personality.mp4
+    photos: [hrr-man-back, ah-man-back, hob-man-back, tb-man-back, ad-man-back]
+    hook: "Your engine says a lot about you"
+    texts: ["V8: loud, loyal, zero chill", "Inline-six: smooth, calm, secretly fast", "Twin-turbo: slow start, then unstoppable", "Flat-six: classy by day, chaos after dark"]
+    cta: "Which one are you?\nlink in bio"
+    music: assets/music/karvit-night-drive.m4a
+
+  # R6 · Mon 16 Nov · wearable anywhere: quiet front, loud back
+  - out: media/reels/r06-quiet-front-loud-back.mp4
+    photos: [hob-man-front, hob-man-back, em-woman-front, em-woman-back, tf-man-side]
+    hook: "Front: college and office safe"
+    texts: ["Back: car-meet ready", "Just a small mark on the front", "The full engine study on the back", "240 GSM · oversized · drop shoulder"]
+    cta: "Quiet front. Loud back.\nlink in bio"
+    music: assets/music/karvit-night-drive.m4a
+
+  # R7 · Thu 19 Nov · trust: exactly what ₹999 gets you
+  - out: media/reels/r07-what-999-gets-you.mp4
+    photos: [tb-man-back, tb-man-back@detail, em-man-side, ah-man-back@detail, hrr-woman-front, tf-woman-front]
+    hook: "What ₹999 gets you at KARVIT"
+    texts: ["240 GSM, 100% cotton", "Oversized, drop shoulder", "DTF-printed back artwork", "Free delivery\nCOD at no extra charge", "Wrong size?\nFree exchange till 31 Dec"]
+    cta: "No surprises\nlink in bio"
+    music: assets/music/karvit-night-drive.m4a
+
+  # R8 · Fri 20 Nov · rate the collection (fast cuts, comment bait with purpose)
+  - out: media/reels/r08-rate-them.mp4
+    seconds: 1.5
+    photos: [tb-man-back, tf-man-back, hob-man-back, hrr-man-back, ah-man-back, em-man-back, ad-man-back, mb-man-back]
+    hook: "Rate them 1 to 10. No. 1"
+    texts: ["No. 2", "No. 3", "No. 4", "No. 5", "No. 6", "No. 7", "No. 8"]
+    cta: "Comment the number you'd wear"
+    music: assets/music/karvit-boost.m4a
+
+  # R9 · Thu 19 Nov · demand test for the rider/mountain line (Motoverse + IBW season)
+  - out: media/reels/r09-riders-pick-the-road.mp4
+    photos: [em-man-back@detail, card-riders-next, card-option-1, card-option-2, card-option-3, card-vote]
+    hook: "We draw engines\nlike this"
+    texts: ["", "", "", "", ""]
+    cta: "Send this to your riding group"
+    music: assets/music/karvit-night-drive.m4a
+
+  # R10 · Fri 20 Nov · car girls: same tee, two fits
+  - out: media/reels/r10-same-tee-two-fits.mp4
+    photos: [tb-woman-back, tb-man-back, tf-woman-front, hrr-woman-side, ah-woman-back]
+    hook: "Car merch is always cut for guys"
+    texts: ["Ours is unisex oversized", "Your usual size = oversized look", "One size down = closer fit", "Same engines. Your fit."]
+    cta: "Send this to a car girl\nlink in bio"
+    music: assets/music/karvit-boost.m4a
+
+carousels:
+  # P1 · Sat 14 Nov · the whole collection in one swipe
+  - outdir: media/carousels/engine-study
+    cover: {file: 01-cover.jpg, title: "The Engine Study", sub: "8 engines · ₹999 each"}
+    slides:
+      - {file: 02-twin-boost.jpg,     photo: tb-man-back,  text: "Twin Boost · twin-turbo inline-six"}
+      - {file: 03-turbo-forms.jpg,    photo: tf-man-back,  text: "Turbo Forms · turbo inline-six"}
+      - {file: 04-heart-of-build.jpg, photo: hob-man-back, text: "Heart of the Build · inline-six"}
+      - {file: 05-high-rev.jpg,       photo: hrr-man-back, text: "High-Rev Ritual · V8"}
+      - {file: 06-american-heart.jpg, photo: ah-man-back,  text: "American Heart · V8"}
+      - {file: 07-engraved.jpg,       photo: em-man-back,  text: "Engraved Motion · V8"}
+      - {file: 08-after-dark.jpg,     photo: ad-man-back,  text: "After Dark · flat-six"}
+      - {file: 09-mech-bloom.jpg,     photo: mb-man-back,  text: "Mechanical Bloom · the white one"}
+
+  # P2 · Wed 18 Nov · gift guide by car-person type
+  - outdir: media/carousels/gift-guide
+    cover: {file: 01-cover.jpg, title: "Gift guide for the car person", sub: "Free size exchange till 31 Dec"}
+    slides:
+      - {file: 02-jdm-fan.jpg,     photo: tb-man-back,    text: "The JDM fan → Twin Boost"}
+      - {file: 03-muscle.jpg,      photo: ah-man-back,    text: "The muscle-car dreamer → American Heart"}
+      - {file: 04-night-drive.jpg, photo: ad-man-back,    text: "The midnight-drive person → After Dark"}
+      - {file: 05-engine-nerd.jpg, photo: mb-man-back,    text: "The engine nerd → Mechanical Bloom"}
+      - {file: 06-subtle.jpg,      photo: hob-man-front,  text: "The one who likes it subtle → any tee, small front mark"}

@@ -137,9 +137,11 @@ karvit.in photos and makes the reels and carousels (about 5 minutes).
 The footer (`🛒 Order at karvit.in (link in bio) · Free delivery · COD available`)
 and `#karvitindia` are added to
 every caption from `settings:` at the top of the file. Hashtags are de-duplicated,
-and captions are checked against Instagram's limits (2,200 characters, 30 hashtags).
+and captions are checked against Instagram's limits (2,200 characters, 5 hashtags
+including `#karvitindia`, 5 @mentions).
 
-**Media straight from karvit.in:** add product photo links and a reel/carousel entry to
+**Media straight from karvit.in:** add product photo links (or a file in this
+repo, e.g. `assets/cards/poll.png`, for text slides) and a reel/carousel entry to
 `content/build.yml`, and the **Build media** workflow makes the files for you
 (hook on slide 1, your text on the following slides, call-to-action at the end).
 Claude can write both the build entries and the queue entries for a whole week
