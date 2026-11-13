@@ -47,12 +47,6 @@ photos:
   # Mechanical Bloom: silver coupe + exploded engine (white)
   mb-man-back:     https://www.karvit.in/cdn/shop/files/karvit-mechanical-bloom-mens-back.png?v=1793689941&width=1400
   mb-woman-front:  https://www.karvit.in/cdn/shop/files/karvit-mechanical-bloom-womens-front.png?v=1793689987&width=1400
-  # Text cards (in this repo)
-  card-riders-next: assets/cards/riders-next.png
-  card-option-1:    assets/cards/rider-option-1.png
-  card-option-2:    assets/cards/rider-option-2.png
-  card-option-3:    assets/cards/rider-option-3.png
-  card-vote:        assets/cards/rider-vote.png
 
 derived:
   # Close-ups of the back print. box/hide = [x0, y0, x1, y1] as fractions of the photo.
@@ -65,87 +59,8 @@ derived:
   q3-ad:  {from: ad-man-back,  box: [0.28, 0.17, 0.72, 0.47], hide: [[0.40, 0.172, 0.60, 0.246], [0.39, 0.374, 0.61, 0.455]], mark: "?"}
   q4-hob: {from: hob-man-back, box: [0.28, 0.17, 0.72, 0.47], hide: [[0.42, 0.184, 0.585, 0.266], [0.415, 0.381, 0.59, 0.455]], mark: "?"}
 
-reels:
-  # R1 · Sat 14 Nov · aspiration: own the engine before the car
-  - out: media/reels/r01-wear-the-engine.mp4
-    photos: [tb-man-back, tb-print, ah-man-back, tf-woman-back, ad-man-back]
-    hook: "Can't afford the dream car yet?"
-    texts: ["Wear its engine instead", "V8", "Turbo inline-six", "Flat-six"]
-    cta: "8 engines · ₹999 each\nlink in bio"
-    music: assets/music/karvit-boost.m4a
-
-  # R2 · Sun 15 Nov · quiz: name the engine
-  - out: media/reels/r02-name-the-engine.mp4
-    photos: [q1-tb, q2-ah, q3-ad, q4-hob, hob-man-back]
-    hook: "Name the engine\nNo. 1"
-    texts: ["No. 2", "No. 3", "No. 4", "Score out of 4?"]
-    cta: "Answers in the comments"
-    music: assets/music/karvit-night-drive.m4a
-
-  # R3 · Sun 15 Nov · tribe debate: JDM vs V8
-  - out: media/reels/r03-jdm-or-v8.mp4
-    photos: [tb-man-back, ah-man-back, tf-man-back, em-man-back, hrr-man-back]
-    hook: "JDM or V8? Pick one."
-    texts: ["V8: no replacement for displacement", "JDM: turbo inline-six", "V8, engraved in copper", "Still can't decide?"]
-    cta: "Comment JDM or V8\nlink in bio"
-    music: assets/music/karvit-boost.m4a
-
-  # R4 · Wed 18 Nov · gifting for the car person
-  - out: media/reels/r04-gift-for-the-car-person.mp4
-    photos: [ah-man-back, tb-man-back, hrr-man-back, ad-woman-back, tf-woman-front]
-    hook: "Gift for the car person\nwho has everything"
-    texts: ["The brother who knows every engine code", "The one who only talks about his car", "The friend who drags you to car meets", "Not sure of the size?\nFree swap till 31 Dec"]
-    cta: "₹999 · free delivery · COD\nlink in bio"
-    music: assets/music/karvit-night-drive.m4a
-
-  # R5 · Tue 17 Nov · relatable/shareable: engine = personality
-  - out: media/reels/r05-engine-personality.mp4
-    photos: [hrr-man-back, ah-man-back, hob-man-back, tb-man-back, ad-man-back]
-    hook: "Your engine says a lot about you"
-    texts: ["V8: loud, loyal,\nzero chill", "Inline-six: smooth, calm, secretly fast", "Twin-turbo: slow start, then unstoppable", "Flat-six: classy by day, chaos after dark"]
-    cta: "Which one are you?\nlink in bio"
-    music: assets/music/karvit-night-drive.m4a
-
-  # R6 · Mon 16 Nov · wearable anywhere: quiet front, loud back
-  - out: media/reels/r06-quiet-front-loud-back.mp4
-    photos: [hob-man-front, hob-man-back, em-woman-front, em-woman-back, tf-man-side]
-    hook: "Front: college and office safe"
-    texts: ["Back: car-meet ready", "Just a small mark on the front", "The full engine study on the back", "240 GSM · oversized\ndrop shoulder"]
-    cta: "Quiet front. Loud back.\nlink in bio"
-    music: assets/music/karvit-night-drive.m4a
-
-  # R7 · Thu 19 Nov · trust: exactly what ₹999 gets you
-  - out: media/reels/r07-what-999-gets-you.mp4
-    photos: [tb-man-back, tb-print, em-man-side, ah-print, hrr-woman-front, tf-woman-front]
-    hook: "What ₹999 gets you\nat KARVIT"
-    texts: ["240 GSM, 100% cotton", "Oversized, drop shoulder", "DTF-printed back artwork", "Free delivery\nCOD at no extra charge", "Wrong size?\nFree swap till 31 Dec"]
-    cta: "No surprises\nlink in bio"
-    music: assets/music/karvit-night-drive.m4a
-
-  # R8 · Fri 20 Nov · rate the collection (fast cuts, comment bait with purpose)
-  - out: media/reels/r08-rate-them.mp4
-    seconds: 1.5
-    photos: [tb-man-back, tf-man-back, hob-man-back, hrr-man-back, ah-man-back, em-man-back, ad-man-back, mb-man-back]
-    hook: "Rate them 1 to 10\nNo. 1"
-    texts: ["No. 2", "No. 3", "No. 4", "No. 5", "No. 6", "No. 7", "No. 8"]
-    cta: "Comment the number you'd wear"
-    music: assets/music/karvit-boost.m4a
-
-  # R9 · Thu 19 Nov · demand test for the rider/mountain line (Motoverse + IBW season)
-  - out: media/reels/r09-riders-pick-the-road.mp4
-    photos: [em-print, card-riders-next, card-option-1, card-option-2, card-option-3, card-vote]
-    hook: "We draw engines\nlike this"
-    texts: ["", "", "", "", ""]
-    cta: "Send this to your riding group"
-    music: assets/music/karvit-night-drive.m4a
-
-  # R10 · Fri 20 Nov · car girls: same tee, two fits
-  - out: media/reels/r10-same-tee-two-fits.mp4
-    photos: [tb-woman-back, tb-man-back, tf-woman-front, hrr-woman-side, ah-woman-back]
-    hook: "Car merch is always cut for guys"
-    texts: ["Ours is unisex oversized", "Your usual size = oversized look", "One size down\n= closer fit", "Same engines. Your fit."]
-    cta: "Send this to a car girl\nlink in bio"
-    music: assets/music/karvit-boost.m4a
+reels: []
+  # add reels here (see the commented example in git history)
 
 carousels:
   # P1 · Sat 14 Nov · the whole collection in one swipe
