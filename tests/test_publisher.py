@@ -229,6 +229,15 @@ class PublishingTests(Base):
         self.assertEqual(self.fake.count("/media"), 0)
         self.assertFalse(self.state_path.exists())
 
+    def test_dry_run_checks_token_even_when_nothing_is_due(self):
+        self.publisher(dry_run=True).run([make_post("later", when=NOW + timedelta(days=1))], NOW)
+        self.assertEqual(self.fake.count("me", method="GET"), 1)
+        self.assertTrue(any("Connected as @karvit" in line for line in self.logs))
+
+    def test_idle_normal_run_makes_no_api_calls(self):
+        self.publisher().run([make_post("later", when=NOW + timedelta(days=1))], NOW)
+        self.assertEqual(self.fake.calls, [])
+
 
 class SafetyTests(unittest.TestCase):
     def test_token_never_appears_in_errors(self):

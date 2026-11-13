@@ -274,6 +274,12 @@ class Publisher:
                                                   f"failed: {exc}"))
         return Outcome(post.id, "published", f"media {media_id}", link)
 
+    def _connect(self) -> None:
+        me = self.client.me()
+        self.user_id = str(me.get("user_id") or me.get("id"))
+        self.log(gh_annotation("notice", f"Connected as @{me.get('username')} "
+                                         f"({me.get('account_type')})"))
+
     def run(self, posts: list[Post], now: datetime, *, force_id: str | None = None) -> list[Outcome]:
         outcomes: list[Outcome] = []
 
@@ -288,16 +294,17 @@ class Publisher:
 
         upcoming = [p for p in posts if p.when > now and not p.draft][:3]
         if not due:
+            # A dry run is how you test the setup, so it always checks the token,
+            # even when nothing is due. Normal runs skip the call when idle.
+            if self.dry_run and self.client:
+                self._connect()
             self.log("Nothing due right now.")
             for p in upcoming:
                 self.log(f"  next: {p.id} at {p.when.astimezone(self.settings.tz):%a %d %b %H:%M %Z}")
             return outcomes
 
         if self.client:
-            me = self.client.me()
-            self.user_id = str(me.get("user_id") or me.get("id"))
-            self.log(gh_annotation("notice", f"Connected as @{me.get('username')} "
-                                             f"({me.get('account_type')})"))
+            self._connect()
             try:
                 limit = self.client.publishing_limit(self.user_id)
                 used = limit.get("quota_usage")
