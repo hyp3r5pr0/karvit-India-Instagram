@@ -85,3 +85,15 @@ carousels:
       - {file: 04-night-drive.jpg, photo: ad-man-back,    text: "The midnight-drive person → After Dark"}
       - {file: 05-engine-nerd.jpg, photo: mb-man-back,    text: "The engine nerd → Mechanical Bloom"}
       - {file: 06-subtle.jpg,      photo: hob-man-front,  text: "The one who likes it subtle → small front mark"}
+
+flickers:
+  # Pause challenge: 8 designs flash past (3 frames each, looping); a 2-frame
+  # secret card hides a discount code. Create the code in Shopify before posting.
+  - out: media/reels/f01-pause-for-the-code.mp4
+    photos: [tb-man-back, tf-man-back, hob-man-back, hrr-man-back, ah-man-back, em-man-back, ad-man-back, mb-man-back]
+    hook: "Only 1% can pause\non the code"
+    cta: "Hold to pause\nwin 10% off"
+    seconds: 12
+    frames_per_photo: 3
+    secret: {code: "PAUSE10", line: "10% OFF YOUR ORDER", at: 7.3, frames: 2}
+    music: assets/music/karvit-boost.m4a

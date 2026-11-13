@@ -55,3 +55,16 @@ posts:
       Swipe to find their tee. Free delivery, COD at no extra charge, and free size exchange on orders till 31 Dec.
     hashtags: [giftsforhim, giftideas, carlovers, petrolhead]
     draft: true   # held 13 Nov: reels were scrapped; confirm before posting
+
+  # ═════════ Recreations of viral reels ═════════
+  - id: f01-pause-for-the-code
+    type: reel
+    when: 2026-11-15 19:30
+    media: media/reels/f01-pause-for-the-code.mp4
+    caption: |
+      Only 1% can pause on the hidden code 👀
+      Hold the screen to pause. Find it? It's yours: 10% off at karvit.in.
+      Send this to the friend with the fastest thumbs.
+    first_comment: "Found the code? Comment 'got it' (don't spoil it for others 🤫)"
+    hashtags: [carlovers, petrolhead, oversizedtshirt, carart]
+    draft: true   # create the PAUSE10 discount code in Shopify first, then delete this line

@@ -252,7 +252,84 @@ def build(only: str | None, skip_existing: bool, *, fetcher=fetch) -> list[Path]
         _montage([Image.open(p).resize((270, 338)) for p in slides],
                  PREVIEWS / f"{outdir.name}.jpg")
         made += slides
+
+    for fl in spec.get("flickers") or []:
+        out = ROOT / fl["out"]
+        if (only and only not in fl["out"]) or (skip_existing and out.exists()):
+            continue
+        print(f"Flicker → {fl['out']}")
+        flicker_reel(fl, [photo(n) for n in fl["photos"]], out)
+        reel_preview(out, PREVIEWS / f"{out.stem}.jpg")
+        made.append(out)
     return made
+
+
+def secret_card(code: str, line: str, size: tuple[int, int]) -> Image.Image:
+    """The hidden frame of a pause challenge: a discount code on a brand card."""
+    w, h = size
+    im = Image.new("RGB", size, BRAND_BG)
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, w - 1, h - 1], outline=ACCENT, width=max(6, w // 90))
+    wordmark(im, y=int(h * 0.12), size=int(w * 0.05))
+    for text, y, fsize, fill in ((code, 0.38, 0.17, ACCENT), (line, 0.58, 0.065, (245, 243, 238)),
+                                 ("use it at checkout · karvit.in", 0.70, 0.045, (170, 170, 175))):
+        f = font(int(w * fsize))
+        tw = d.textlength(text, font=f)
+        d.text(((w - tw) / 2, h * y), text, font=f, fill=fill)
+    return im
+
+
+def flicker_reel(fl: dict, photos: list[Path], out: Path) -> None:
+    """'Only 1% can pause at the right time': the photos flash past a few frames
+    each and one moment shows a secret card (e.g. a discount code)."""
+    from make_reel import compose_slide  # same layout as the other reels
+    import tempfile
+    fps = 30
+    per = int(fl.get("frames_per_photo", 3))
+    total = int(float(fl.get("seconds", 12)) * fps)
+    sec = fl.get("secret") or {}
+    s_at, s_len = int(float(sec.get("at", 7.3)) * fps), int(sec.get("frames", 2))
+    with Image.open(photos[0]) as p0:
+        card_size = p0.size
+    with tempfile.TemporaryDirectory() as tmp:
+        tmpd = Path(tmp)
+        frames = []
+        for i, src in enumerate(photos):
+            f = tmpd / f"p{i}.png"
+            compose_slide(src, top_text=fl.get("hook"), cta=fl.get("cta"), bg=None,
+                          brand="KARVIT").save(f)
+            frames.append(f)
+        card = tmpd / "card.png"
+        secret_card(str(sec.get("code", "PAUSE10")), str(sec.get("line", "10% OFF")),
+                    card_size).save(tmpd / "card-src.png")
+        compose_slide(tmpd / "card-src.png", top_text=fl.get("hook"), cta=fl.get("cta"),
+                      bg=None, brand="KARVIT").save(card)
+        seq = [card if s_at <= t < s_at + s_len else frames[(t // per) % len(frames)]
+               for t in range(total)]
+        runs: list[list] = []
+        for f in seq:
+            if runs and runs[-1][0] == f:
+                runs[-1][1] += 1
+            else:
+                runs.append([f, 1])
+        lst = tmpd / "list.txt"
+        lst.write_text("".join(f"file '{f}'\nduration {n / fps:.5f}\n" for f, n in runs)
+                       + f"file '{runs[-1][0]}'\n")
+        dur = total / fps
+        cmd = ["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst)]
+        if fl.get("music"):
+            cmd += ["-stream_loop", "-1", "-i", str(ROOT / fl["music"])]
+        else:
+            cmd += ["-f", "lavfi", "-i", "anullsrc=channel_layout=stereo:sample_rate=44100"]
+        cmd += ["-filter_complex",
+                f"[0:v]fps={fps},format=yuv420p[v];[1:a]atrim=0:{dur:.3f},asetpts=PTS-STARTPTS,"
+                f"afade=t=out:st={max(dur - 1.0, 0):.3f}:d=1.0[a]",
+                "-map", "[v]", "-map", "[a]", "-t", f"{dur:.3f}", "-c:v", "libx264",
+                "-preset", "veryfast", "-crf", "20", "-r", str(fps), "-c:a", "aac", "-b:a", "128k",
+                "-movflags", "+faststart", str(out)]
+        out.parent.mkdir(parents=True, exist_ok=True)
+        subprocess.run(cmd, check=True)
+    print(f"  secret frame(s) at {s_at / fps:.2f}s for {s_len} frame(s)")
 
 
 def main() -> None:
