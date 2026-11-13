@@ -57,6 +57,19 @@ posts:
     draft: true   # held 13 Nov: reels were scrapped; confirm before posting
 
   # ═════════ Recreations of viral reels ═════════
+  # r07: made in Google Flow, edited (badge removed, hook + CTA added); keeps its
+  # Content Credentials, so Instagram may show an "AI info" label.
+  - id: r07-engine-dive
+    type: reel
+    when: 2026-11-14 19:30
+    media: media/reels/r07-engine-dive.mp4
+    thumb_offset: 7500            # cover = the TWIN BOOST print close-up
+    caption: |
+      Where does a twin-turbo engine end up? On your back. 🔧🔥
+      Twin Boost: a JDM coupe and its twin-turbo inline-six, printed big on a 240 GSM oversized tee.
+      ₹999 · free delivery · COD at no extra charge.
+    first_comment: "Send this to the friend who'd rather spend on turbos than clothes 😅"
+    hashtags: [jdm, carlovers, petrolhead, oversizedtshirt]
   - id: f01-pause-for-the-code
     type: reel
     when: 2026-11-15 19:30
