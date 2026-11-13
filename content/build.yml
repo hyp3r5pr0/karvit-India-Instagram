@@ -94,7 +94,7 @@ reels:
   - out: media/reels/r04-gift-for-the-car-person.mp4
     photos: [ah-man-back, tb-man-back, hrr-man-back, ad-woman-back, tf-woman-front]
     hook: "Gift for the car person\nwho has everything"
-    texts: ["The brother who knows every engine code", "The one who only talks about his car", "The friend who drags you to car meets", "Not sure of the size?\nFree exchange\ntill 31 Dec"]
+    texts: ["The brother who knows every engine code", "The one who only talks about his car", "The friend who drags you to car meets", "Not sure of the size?\nFree swap till 31 Dec"]
     cta: "₹999 · free delivery · COD\nlink in bio"
     music: assets/music/karvit-night-drive.m4a
 
@@ -118,7 +118,7 @@ reels:
   - out: media/reels/r07-what-999-gets-you.mp4
     photos: [tb-man-back, tb-print, em-man-side, ah-print, hrr-woman-front, tf-woman-front]
     hook: "What ₹999 gets you\nat KARVIT"
-    texts: ["240 GSM, 100% cotton", "Oversized, drop shoulder", "DTF-printed back artwork", "Free delivery\nCOD at no extra charge", "Wrong size?\nFree exchange\ntill 31 Dec"]
+    texts: ["240 GSM, 100% cotton", "Oversized, drop shoulder", "DTF-printed back artwork", "Free delivery\nCOD at no extra charge", "Wrong size?\nFree swap till 31 Dec"]
     cta: "No surprises\nlink in bio"
     music: assets/music/karvit-night-drive.m4a
 
